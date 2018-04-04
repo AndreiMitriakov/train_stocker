@@ -3,7 +3,14 @@
     {
         function action_index()
         {
-            $this->view->generate('main_view.php', 'template_view.php');
+            if(isset($_COOKIE["PHPSESSID"]) == FALSE) {
+                Template_View::generate('main_view.php');
+            }
+            else{
+                header("Location:http://mstk.com/major");
+
+            }
+
         }
         
     }

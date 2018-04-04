@@ -1,0 +1,1 @@
+<p><?php echo "Buy some weed, mec..."; ?></p>

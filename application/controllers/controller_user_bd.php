@@ -4,7 +4,9 @@ class Controller_User_bd extends Controller
     function action_add_user()
     {
         Model_Users::add_user($_POST);
-        header("Location:http://mstk.com/major");
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        //header("Location:http://mstk.com/major");
     }
     function action_get_users()
     {
@@ -16,17 +18,17 @@ class Controller_User_bd extends Controller
     function action_delete_user()
     {
         Model_Users::delete_user($_POST);
-        header("Location:http://mstk.com/major");
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
     function action_set_role()
     {
         Model_Users::set_role($_POST);
-        header("Location:http://mstk.com/major");
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
     function action_get_role()
     {
         $result = Model_Users::get_role($_POST);
-        header("Location:http://mstk.com/major");
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
     function action_index()
     {

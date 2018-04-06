@@ -5,8 +5,8 @@
         {
             if(isset($_COOKIE["PHPSESSID"])) {
                 session_start();
-                $toCall = $_SESSION['role'].'_view.php';
-                Template_View::generate($toCall);
+                $view = 'major_view.php';
+                Template_View::generate($view, $_SESSION['role']);
             }
             else{
                 header("Location:http://mstk.com");
@@ -16,7 +16,8 @@
         {
             if(isset($_COOKIE["PHPSESSID"])) {
                 session_start();
-                Template_View::generate('usersManaging_view.php');
+                $data = Model_Users::get_all_users();
+                Template_View::generate('usersManaging_view.php', null, $data);
             }
             else{
                 header("Location:http://mstk.com");

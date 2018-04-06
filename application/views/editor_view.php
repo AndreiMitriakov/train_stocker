@@ -1,4 +1,4 @@
-<?php   
-    include 'application/views/main_functions.php';
-    echo "choose your action: 1. Links; 2. Your profile";
-?>
+<form action="/major/flinks" param = "value" method="POST">
+    <a href="/major/flinks"></a>
+    <input type="submit" value = "Manage links">
+</form>

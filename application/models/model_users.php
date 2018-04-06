@@ -5,11 +5,21 @@ class Model_Users extends Model
         if ($data) {
             if (!$data["username"]) {
                 return FALSE;
-            } elseif (!$data["pwrd"]) {
+            }
+            elseif (!$data["password"]) {
                 return FALSE;
-            } else {
+            }
+            else{
                 $pdo = new PDO('mysql:host=localhost; dbname=mstk', 'root', '');
-                $query = 'insert into users (id, login, password, role) values (\'NULL\', \''.$data['username'].'\',\''.$data['pwrd'].'\', \'user\');';
+                $query = 'select login from users ';
+                $stm = $pdo->query($query);
+                $info = $stm->fetchall(PDO::FETCH_ASSOC);
+                foreach($info as $row){
+                    if($row['login'] == $data['username']){
+                        return FALSE;
+                    }
+                }
+                $query = 'insert into users (login, password, role) values (\''.$data['username'].'\',\''.$data['password'].'\', \'user\');';
                 $pdo->query($query);
                 return TRUE;
             }
@@ -28,18 +38,17 @@ class Model_Users extends Model
         return $cell['role'];
 
     }
-    static public function get_all_users($data){
+    static public function get_all_users($data=null){
         $pdo = new PDO('mysql:host=localhost; dbname=mstk', 'root', '');
         $query = 'select * from users;';
-        $pdo->query($query);//returned a PDO statement object
-        return $pdo;
+        $stm = $pdo->query($query);//returned a PDO statement object
+        $info = $stm->fetchall(PDO::FETCH_ASSOC);
+        return $info;
     }
     static public function delete_user($data){
         $pdo = new PDO('mysql:host=localhost; dbname=mstk', 'root', '');
-        $query = 'delete from users where login=\''.$data.'\';';
+        $query = 'delete from users where login=\''.$data['login'].'\';';
         $pdo->query($query);//returned a PDO statement object
+
     }
-
-
-
 }

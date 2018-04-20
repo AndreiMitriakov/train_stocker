@@ -1,36 +1,30 @@
 <?php
 class Template_View extends View
 {
-    public static function generate($content_view, $role = null, $data = null)
+    public static function generate($role = null,  $data = null, $link=null, $logo = null)
     {
-        echo "<!DOCTYPE html>
-        <html lang=\"ru\">
-        <head>";
-        include 'application/views/head.php';
-        echo "</head>
-        <body>";
-        include 'application/views/header.php';
-        include 'application/views/navigation.php';
-        include 'application/views/' . $content_view;
 
-        if($data != null ) {
-            include 'application/views/show_result.php';
-            View_Showing::show_result($data);
-        }
-        if($role == 'editor'){
-            $toShow = $role.'_view.php';
-            include 'application/views/'.$toShow;
-        }
-        elseif ($role == 'admin'){
-            include 'application/views/editor_view.php';
-            $toShow = $role.'_view.php';
-            include 'application/views/'.$toShow;
-        }
-        if($content_view != 'main_view.php'){
-            include 'application/views/main_functions.php';
-        }
-        include 'application/views/footer.php';
-        echo "</body>
-        </html>";
+        View_Head::head_and_start_html();
+        echo "<body>";
+        View_Header::header($role);//наследует все includes от View
+        echo "<div class=\"row\">";
+            echo "<div class=\"col-lg-10\">";
+                if($data != null ){
+                    View_Work::data_to_show($data);
+                }
+                if($link != null ){
+
+                    View_Link::show_link($link);
+                }
+
+            echo "</div>";
+            echo "<div class=\"col-lg-2\">";
+                View_Ads::show_ads();
+            echo "</div>";
+        echo "</div>";
+        View_Footer::footer();
+        //include 'application/views/footer.php';
+        echo "</body>";
+        View_Head::end_html();
     }
 }

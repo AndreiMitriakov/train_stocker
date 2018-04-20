@@ -3,8 +3,9 @@ class Route
 {
     static function start()
     {
-        $controller_name = 'Main';
+        $controller_name = 'Major';
         $action_name = 'index';
+        $info['url'] = '0';
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
         // получаем имя контроллера
@@ -16,6 +17,10 @@ class Route
         if ( !empty($routes[2]) )
         {
             $action_name = $routes[2];
+        }
+        if ( !empty($routes[3]) )
+        {
+            $info['url'] = $routes[3];
         }
 
         // добавляем префиксы
@@ -55,7 +60,12 @@ class Route
         if(method_exists($controller, $action))
         {
             // вызываем действие контроллера
-            $controller->$action();
+            if($info['url'] == '0'){
+                $controller->$action();
+            }
+            else{
+                $controller->$action($info['url']);
+            }
         }
         else
         {

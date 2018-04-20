@@ -1,0 +1,59 @@
+body {
+    background-color: lightgrey;
+}
+
+.footer {
+
+    background-color: #777;
+
+    color: #711;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+}
+
+
+.list-group-item:hover {
+    background-color: #EEEFE4;
+
+}
+.but{
+    position: relative;
+    left: 0;
+}
+.dispC { display:block;}
+input { display:block;}
+.size10 {
+    width:10% ;
+
+}
+.size20 {
+    width:10% ;
+
+}
+.size30 {
+    width:10% ;
+
+}
+
+#tree {
+
+    width: 100%;
+    height: auto;
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+h1 {
+    color: Black;
+    margin-left: 100px;
+}
+form {
+    margin-left:80px;
+}

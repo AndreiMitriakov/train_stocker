@@ -3,9 +3,8 @@ class View_Work extends View{
     public function data_to_show($data){
         eval($data[0]);
         unset($data[0]);
-        echo"
-<table class=\"table\">
-<tbody>";
+        echo"<table id = \"ajax\" class=\"table\">
+            <tbody>";
         foreach($data as $row){
             echo "<tr>";
             foreach ($row as $element){
@@ -15,7 +14,6 @@ class View_Work extends View{
             }
             echo "</tr>";
         }
-
         echo "</tbody>";
         echo "</table>";
     }

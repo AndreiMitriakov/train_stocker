@@ -77,6 +77,13 @@
             }
             $_SESSION['data']=$toSend;
         }
+        function action_ajax()//Some problems with sessions. Where should it be started ?
+        {
+            echo "HERE <br>";   
+            print_r($_POST);
+            exit();
+
+        }
         function action_finish($data)//Some problems with sessions. Where should it be started ?
         {
             if(isset($_COOKIE["PHPSESSID"]) == FALSE){

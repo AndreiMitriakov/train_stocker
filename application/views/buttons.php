@@ -24,15 +24,7 @@ class View_Buttons extends View
         ";
     }
 
-    public static function delete_link($data=null)
-    {
-        #$_POST['id_link'] = $data;
-        echo "
-        <form action=\"/link/delete_link\" param = \"value\" method=\"POST\">
-                <button  type=\"submit\" class=\"btn btn-primary\" name =\"id_link\" value=\"$data\">Delete</button>
-        </form>
-                ";
-    }
+
     public static function update_link($data=null)
     {
         echo "
@@ -50,9 +42,26 @@ class View_Buttons extends View
         </form>
                 ";
     }
+    public static function delete_link($data=null)
+    {
+        //$_POST['id_link'] = $data;
+
+        echo "
+
+        <form action=\"/link/delete_link\" param = \"value\" method=\"POST\">
+                <button  type=\"submit\" class=\"btn btn-primary\" name =\"id_link\" value=\"$data\">Delete</button>
+        </form>
+                ";
+
+        //echo "<button type=\"button\" onclick=\"initAjax('delete_link', '$data')\">Request data</button>";
+    }
+    public static function butt($data=null)
+    {
+        echo "<button type=\"button\" onclick=\"changeText('buttJS'), initAjax('butt', '1')\"><p id='buttJS'>Ready</p></button>";
+    }
     public static function create_link()
     {
-        echo"
+        echo "
 <form action=\"/link/add_link\"  method=\"POST\" class=\"form-inline\" role=\"form\">
    <div class=\"form-group \">
       <label >URL</label>

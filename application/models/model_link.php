@@ -35,13 +35,11 @@ class Model_Link extends Model
     }
 
     static public function delete_link($data){
-        $query = 'delete from links where id_link=\''.$data['id_link'].'\';';
+        $query = 'delete from links where id_link=\''.$data.'\';';
         $GLOBALS['pdo']->query($query);//returned a PDO statement object
 
     }
     static public function get_user_link($data){
-
-
         $query = 'select lname, author_name, access, description from links where id_link=\''.$data.'\';';
         $stm = $GLOBALS['pdo']->query($query);//returned a PDO statement object
         $cell = $stm->fetchAll(PDO::FETCH_ASSOC);//returned a PDO statement object

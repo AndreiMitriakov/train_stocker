@@ -39,7 +39,7 @@ class Model_User extends Model
             }
         }
     }
-    static public function chage_role($data){
+    static public function change_role($data){
         $id = $data['id'];
         $query = 'select role from users where id=\''.$id.'\';';
         $stm = $GLOBALS['pdo']->query($query);//returned a PDO statement object
@@ -50,7 +50,9 @@ class Model_User extends Model
         else{
             $toSet = 'user';
         }
-        $query = 'update users set role=\''.$toSet.'\' where id=\''.$id.'\';';
+        if($cell['role']!='admin') {
+            $query = 'update users set role=\'' . $toSet . '\' where id=\'' . $id . '\';';
+        }
         $GLOBALS['pdo']->query($query);//returned a PDO statement object
     }
     static public function get_role($data){

@@ -22,7 +22,6 @@ class Template_View extends View
                 View_Ads::show_ads();
             echo "</div>";
         echo "<div class=\"col-lg-2\">";
-        View_Buttons::butt();
         echo "</div>";
         echo "</div>";
         View_Footer::footer();

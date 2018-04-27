@@ -77,13 +77,7 @@
             }
             $_SESSION['data']=$toSend;
         }
-        function action_ajax()//Some problems with sessions. Where should it be started ?
-        {
-            echo "HERE <br>";   
-            print_r($_POST);
-            exit();
 
-        }
         function action_finish($data)//Some problems with sessions. Where should it be started ?
         {
             if(isset($_COOKIE["PHPSESSID"]) == FALSE){
@@ -209,8 +203,8 @@
                  $row = array();
                  $row[] = 'echo "'.$element['id'].'";';
                  $row[] = 'echo "'.$element['login'].'";';
-                 $row[] = 'echo "'.$element['active'].'";';
                  $row[] = 'echo "'.$element['role'].'";';
+                 $row[] = 'echo "'.$element['active'].'";';
                  $row[] = 'echo "'.$element['email'].'";';
                  $row[] = 'View_Buttons::delete_user(\''.$element['id'].'\');';
                  $row[] = 'View_Buttons::change_role_user(\''.$element['id'].'\');';

@@ -51,7 +51,7 @@ class Controller_User extends Controller
     }
     function action_change_role()
     {
-        Model_User::chage_role($_POST);
+        Model_User::change_role($_POST);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
     function action_get_role()

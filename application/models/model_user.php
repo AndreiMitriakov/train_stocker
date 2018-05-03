@@ -88,8 +88,7 @@ class Model_User extends Model
     static public function logout()
     {
         //session_start();
-        session_destroy();
-        setcookie("PHPSESSID", "", time() - 3600, "/");
+
     }
     static public function activate_user($data)
     {

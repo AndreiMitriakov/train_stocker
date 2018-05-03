@@ -27,7 +27,16 @@ class View_Buttons extends View
 
     public static function update_link($data=null)
     {
+
         echo "<button type=\"button\" onclick=\"update_link('$data')\">Update</button>";
+        /*
+        echo "
+        <form action=\"/link/update_link\" param = \"value\" method=\"POST\">
+                <button  type=\"submit\" class=\"btn btn-primary\" name =\"id_link\" value=\"$data\">Update link</button>
+        </form>
+                ";
+    */
+
     }
     public static function empty_button($data=null){}
     public static function check_link($data=null)

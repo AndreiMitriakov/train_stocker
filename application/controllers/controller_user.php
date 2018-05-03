@@ -2,7 +2,9 @@
 class Controller_User extends Controller
 {
     function action_logout(){
-        Model_User::logout();
+        //Model_User::logout();
+        session_destroy();
+        setcookie("PHPSESSID", "", time() - 3600, "/");
         header("Location:http://mstk.com");
     }
     function action_auth(){
@@ -17,7 +19,6 @@ class Controller_User extends Controller
 
     function action_send_mail()
     {
-        //session_start();
         $to = $_SESSION['email'];
         $to='andrej.mitryakov@yandex.ru';//to delete
         $subject = 'Finish your signing up on mstk.com';

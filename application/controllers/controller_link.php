@@ -12,17 +12,21 @@ class Controller_Link extends Controller
     }
     function action_delete_link()
     {
-
         Model_Link::delete_link($_POST['id_link']);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
+
     }
 
     function action_update_link()
     {
-        header('Access-Control-Allow-Origin: http://mstk.com');
-        var_dump($_POST);
-        //Model_Link::update_link($_POST);
-        //header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+
+        //$data = file_get_contents('php://input');
+        //print_r($data);
+        Model_Link::update_link($_POST);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        //echo "1";
+
     }
     function action_get_user_links()
     {

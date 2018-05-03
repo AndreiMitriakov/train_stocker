@@ -6,7 +6,7 @@ $stm = $pdo->query($query);//returned a PDO statement object
 $stm->fetch(PDO::FETCH_ASSOC);//returned a PDO statement object
 foreach ($stm as $row){
     $dif = $time - (int)$row['time'];
-    if ($dif > 60){
+    if ($dif > 86400){
         $query = 'delete from queue where url=\''.$row['url'].'\';';
         $pdo->query($query);//returned a PDO statement object
     }

@@ -100,11 +100,7 @@
         }
         function action_show_link()
         {
-
-            //session_start();
-
             $result = Model_Link::get_user_link($_POST['id_link']);
-            
             $block = array();
             $i = 0;
             $keys= array_keys($result[0]);
@@ -114,7 +110,6 @@
                 $key = ucfirst($key);
                 $key = split(' ', $key);
                 $keys_[] = $key[0];
-
             }
             foreach ($result[0] as $element){
 

@@ -20,23 +20,6 @@ function changeColor(num) {
     element.style.background = getRandomColor();
 }
 
-function delete_link(id){
-    var elements = document.getElementsByClassName('3');
-    for (var i = 0; i<elements.length; i++){
-        var item = "echo \""+id_link+"\";";
-        if(elements.item(i).parentNode.id == item){
-            if(elements.item(i).innerHTML == 'public'){
-                sendCommandjQuery('link','update_link','update',id_link);
-                elements.item(i).innerHTML = 'private';
-            }
-            else{
-                sendCommandjQuery('link','update_link','update',id_link);
-                elements.item(i).innerHTML = 'public';
-            }
-        }
-    }
-}
-
 function sendCommand( controller, action, id, data){
     var xhttp = new XMLHttpRequest();
     xhttp.withCredentials = true;
@@ -45,15 +28,11 @@ function sendCommand( controller, action, id, data){
             alert(this.responseText);
         }
     };
-    var address = "/"+controller+"/"+action+"/";
+    var address = "/"+controller+"/"+action;
     xhttp.open("POST", address, true);
-    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-    xhttp.setRequestHeader("Accept", "*/*");
-    xhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-    //var obj = { "type":"json", id:data };
-    //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //var textJson = JSON.stringify(obj);
-    xhttp.send("1234");
+    xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//x-www-form-urlencoded
+    var toSend= id+'='+data;
+    xhttp.send(encodeURI(toSend));
 
 }
 
@@ -98,36 +77,22 @@ function update_link(id_link){
         var item = "echo \""+id_link+"\";";
         if(elements.item(i).parentNode.id == item){
             if(elements.item(i).innerHTML == 'public'){
+
                 sendCommand('link','update_link','update',id_link);
                 elements.item(i).innerHTML = 'private';
             }
             else{
+
                 sendCommand('link','update_link','update',id_link);
                 elements.item(i).innerHTML = 'public';
             }
         }
     }
+    //location.replace("/link/update_link");
 }
 
 function delete_link(id_link){
     var item = "echo \""+id_link+"\";";
-    sendCommandjQuery('link','delete_link','id_link',id_link);
+    sendCommand('link','delete_link','id_link',id_link);
     document.getElementById(item).remove();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

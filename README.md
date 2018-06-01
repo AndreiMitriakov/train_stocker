@@ -5,4 +5,5 @@ Several functionalities were released:
 2. Registration and mail sending
 3. Possibility to manage entities - links using CRUD conception.
 4. Admin page is created with the possibility to manage users, CRUD is implemented for this too. 
+
 Technologies: PHP5, JS, HTML, CSS, bootstrap, AJAX, jQuery
